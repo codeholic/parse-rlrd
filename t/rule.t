@@ -33,7 +33,7 @@ my @tests = (
     },
 );
 
-plan tests => scalar keys %grammars;
+plan tests => @tests + keys %grammars;
 
 while (my ($name, $grammar) = each %grammars) {
     my $p = Parse::RLRD::Rule->new($grammar);
