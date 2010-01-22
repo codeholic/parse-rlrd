@@ -83,7 +83,7 @@ sub apply {
             }
             
             if ($matches->[$i] && (!$best || $matches->[$i][0][1] < $best->[0][1])) {
-                $best = [@{$matches->[$i]}]; # XXX
+                $best = $matches->[$i]; # XXX
 #print Dumper($best);
                 $rule = $self->{children}[$i];
                 last if $best->[0][1] == 0;
@@ -98,7 +98,6 @@ sub apply {
         
         $best or last;
         
-        $rule = $self->rule_class->new($rule) if !blessed($rule);
         $rule->build($node, $best, $options);
         
         my $chopped = $best->[0][1] + length($best->[0][0]);

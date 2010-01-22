@@ -6,7 +6,7 @@ use File::Spec ();
 use FindBin ();
 use Test::More;
 
-use lib File::Spec->updir;
+use lib File::Spec->catdir($FindBin::Bin, File::Spec->updir);
 
 use Parse::RLRD;
 
